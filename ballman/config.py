@@ -4,6 +4,6 @@ class Config:
 
         self.width_screen = 800
         self.height_screen = 600
-        self.ball_speed_factor = 2
+        self.ball_speed_factor = 6
         self.platform_speed_factor = 8
         self.tick = 60

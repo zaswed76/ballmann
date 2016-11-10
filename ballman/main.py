@@ -5,6 +5,7 @@ import functions as gf
 from config import Config
 from game_objects import Ball, Platform
 
+ball_image = 'images/ball.png'
 
 def run_game():
     # Инициализирует игру и создает объект экрана.
@@ -17,7 +18,7 @@ def run_game():
     bg = pygame.image.load("images/bg.jpg")
     platform = Platform(screen, conf, 'images/platform.png')
     balls = Group()
-    gf.create_balls(screen, 'images/ball.png', conf,  balls, platform)
+    gf.create_balls(screen, ball_image, conf,  balls, platform)
     # Запуск основного цикла игры.
     timer = pygame.time.Clock()
     while True:
@@ -29,7 +30,7 @@ def run_game():
 
         platform.update()
         platform.blitme()
-        gf.update_balls(balls, conf)
+        gf.update_balls(balls, conf, screen, ball_image, platform)
         balls.draw(screen)
         # Отображение последнего прорисованного экрана.
         pygame.display.flip()

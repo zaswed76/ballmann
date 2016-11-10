@@ -49,9 +49,12 @@ def create_balls(screen, image, conf, balls, platform):
     balls.add(ball)
 
 
-def update_balls(balls, conf):
+def update_balls(balls, conf, screen, image, platform):
     balls.update()
     for ball in balls.copy():
         if ball.rect.top >= conf.height_screen:
             balls.remove(ball)
-    print(len(balls))
+    collisions = pygame.sprite.spritecollideany(platform, balls)
+    balls.remove(collisions)
+    if not balls:
+        create_balls(screen, image, conf, balls, platform)
